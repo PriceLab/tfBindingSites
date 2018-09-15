@@ -1,0 +1,3 @@
+q <-
+function (...) 
+quit("no")

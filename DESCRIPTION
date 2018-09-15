@@ -1,0 +1,14 @@
+Package: tfBindingSites
+Type: Package
+Title: assess TF binding site predictions using ChIP-seq
+Version: 0.99.0
+Date: 2018-09-15
+Encoding: UTF-8
+Author: Paul Shannon
+Maintainer: <pshannon@systemsbiology.org>
+Description: Fimo and Bioconductor both offer motif-to-sequence match algorithms.
+  Thie package assesses these algorithms against ChIP-seq experimental binding sites.
+Depends: R (>= 3.5.0), GenomicRanges, trena, MotifDb, org.Hs.eg.db
+Imports: methods, BiocGenerics, RSQLite, FimoClient
+License: MIT
+RoxygenNote: 6.1.0

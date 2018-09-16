@@ -23,7 +23,7 @@
 
 #------------------------------------------------------------------------------------------------------------------------
 setGeneric('getChipSeqHits', signature='obj', function (obj, chromosome, min, max) standardGeneric ('getChipSeqHits'))
-setGeneric('getFimoHits',   signature='obj',  function (obj, tbl.regions) standardGeneric ('getFimoHits'))
+setGeneric('getFimoHits',   signature='obj',  function (obj, tbl.regions, pvalThreshold) standardGeneric ('getFimoHits'))
 setGeneric('getMotifMatcherHits', signature='obj', function(obj, tbl.regions, pfms, matchThreshold)
               standardGeneric('getMotifMatcherHits'))
 #------------------------------------------------------------------------------------------------------------------------
@@ -97,18 +97,18 @@ setMethod('getChipSeqHits', 'tfBindingSites',
 
 setMethod('getFimoHits', 'tfBindingSites',
 
-     function (obj, tbl.regions){
+     function (obj, tbl.regions, pvalThreshold){
         stopifnot(all(c("chr", "start", "end") %in% colnames(tbl.regions)))
         seqs <- with(tbl.regions, as.list(as.character(getSeq(obj@genome, chr, start, end))))
         names(seqs) <- sprintf("region.%02d", seq_len(nrow(tbl.regions)))
-        tbl <- requestMatch(obj@fimoClient, seqs, 10e-3)
+        tbl <- requestMatch(obj@fimoClient, seqs, pvalThreshold)
         if(nrow(tbl) > 0){
            tbl$chr <- tbl.regions$chr[1]
            tbl$pvalScore <- -log10(tbl$p.value)
            for(r in 1:nrow(tbl.regions)){
               chrom.start <- tbl.regions[r, "start"]
               rows.oi <- grep(sprintf("region.%02d", r), tbl$sequence.name)
-              printf(" %d rows.oi for row %d", rows.oi, r)
+              if(!obj@quiet) printf(" %d rows.oi for row %d", rows.oi, r)
               if(length(rows.oi) > 0){
                  tbl$start[rows.oi] <- tbl$start[rows.oi] + chrom.start;
                  tbl$stop[rows.oi] <- tbl$stop[rows.oi] + chrom.start;

@@ -6,7 +6,7 @@
 \alias{getFimoHits}
 \title{get a table of FIMO hits in the regions specified in the incoming data.frame}
 \usage{
-\S4method{getFimoHits}{tfBindingSites}(obj, tbl.regions)
+\S4method{getFimoHits}{tfBindingSites}(obj, tbl.regions, pvalThreshold)
 }
 \arguments{
 \item{obj}{An object of class tfBindingSites}

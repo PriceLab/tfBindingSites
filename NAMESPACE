@@ -2,9 +2,13 @@
 
 export(tfBindingSitesCtor)
 exportClasses(tfBindingSites)
+exportMethods(getChipSeqHits)
+exportMethods(getFimoHits)
+exportMethods(getMotifMatcherHits)
 import(BiocGenerics)
 import(FimoClient)
 import(GenomicRanges)
 import(RSQLite)
+import(trena)
 importFrom(methods,is)
 importFrom(methods,new)

@@ -4,7 +4,8 @@
 \alias{tfBindingSitesCtor}
 \title{Create a tfBindingSitesCtor object}
 \usage{
-tfBindingSitesCtor(tf, quiet = TRUE)
+tfBindingSitesCtor(tf, genome, chipseq.db.file, fimoHost, fimoPort,
+  quiet = TRUE)
 }
 \arguments{
 \item{tf}{character, a transcription factor gene symbol name}

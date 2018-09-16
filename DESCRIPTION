@@ -9,6 +9,6 @@ Maintainer: <pshannon@systemsbiology.org>
 Description: Fimo and Bioconductor both offer motif-to-sequence match algorithms.
   Thie package assesses these algorithms against ChIP-seq experimental binding sites.
 Depends: R (>= 3.5.0), GenomicRanges, trena, MotifDb, org.Hs.eg.db
-Imports: methods, BiocGenerics, RSQLite, FimoClient
+Imports: methods, BiocGenerics, RSQLite, FimoClient, trena
 License: MIT
 RoxygenNote: 6.1.0
